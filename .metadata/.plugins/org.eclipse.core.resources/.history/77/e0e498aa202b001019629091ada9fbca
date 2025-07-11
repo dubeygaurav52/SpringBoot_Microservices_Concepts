@@ -1,0 +1,18 @@
+package in.gaurav.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Entity
+@Data
+public class Genders {
+
+	@Id
+	@Column(name = "GENDER_ID")
+	private Integer genderId;
+	
+	@Column(name = "GENDER_NAME")
+	private String genderName;
+}

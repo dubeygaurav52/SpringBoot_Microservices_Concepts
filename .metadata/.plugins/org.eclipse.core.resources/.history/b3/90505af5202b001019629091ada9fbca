@@ -1,0 +1,13 @@
+spring.application.name=23-SB-Web-Student-Reg-App
+
+
+server.port=9090
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.url=jdbc:oracle:thin:@192.168.0.43:1521/swatpdb1.3disystems.com
+spring.datasource.username=hr
+spring.datasource.password=hr
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+
+spring.jpa.show-sql=true

@@ -1,0 +1,28 @@
+package in.gaurav.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+
+import in.gaurav.bindings.StockPriceResponse;
+import in.gaurav.repository.StockPriceRepository;
+
+public class StockPriceServiceImpl implements StockPriceService {
+
+	@Autowired
+	private StockPriceRepository priceRepository;
+	
+	@Autowired
+	private Environment environment;
+	
+	@Override
+	public StockPriceResponse getStockePrice(String companyName) {
+		Double stockPriceByCompanyName = priceRepository.findStockPriceByCompanyName(companyName);
+		StockPriceResponse response=new StockPriceResponse();
+		response.setCompanyName(companyName);
+		response.setCompanyStockPrice(stockPriceByCompanyName);
+		String port = environment.getProperty("server.port");
+		response.setPostNumber(Integer.parseInt(port));
+		return response;
+	}
+
+}

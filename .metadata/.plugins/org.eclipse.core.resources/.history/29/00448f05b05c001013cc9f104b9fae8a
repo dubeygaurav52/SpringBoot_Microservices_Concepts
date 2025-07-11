@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: 50-SB-MS-Service-Registry
+server:
+  port: 7208

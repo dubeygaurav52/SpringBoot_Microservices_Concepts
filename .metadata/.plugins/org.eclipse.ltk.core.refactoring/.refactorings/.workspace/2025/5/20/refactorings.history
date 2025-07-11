@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;31-SB-RS-Path-Params-App&apos; to &apos;32-SB-RS-PathParams-App&apos;&#x0D;&#x0A;- Original element: &apos;31-SB-RS-Path-Params-App&apos;&#x0D;&#x0A;- Renamed element: &apos;31-SB-RS-Path-Params-App&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;31-SB-RS-Path-Params-App&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=31-SB-RS-Path-Params-App" name="32-SB-RS-PathParams-App" references="true" stamp="1747129895614" version="1.0"/>
+</session>

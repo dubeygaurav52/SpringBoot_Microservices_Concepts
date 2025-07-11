@@ -1,0 +1,14 @@
+package in.gaurav.rest;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WelcomeRestController {
+
+	public String getWelcomeMsg() {
+		
+		String msg="Welcome to Ashok IT...!!";
+		
+		return msg;
+	}
+}

@@ -1,0 +1,26 @@
+package in.gaurav.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import in.gaurav.request.SearchRequest;
+import in.gaurav.service.ReportService;
+
+@Controller
+public class ReportController {
+
+	@Autowired
+	private ReportService reportService;
+	
+	@GetMapping("/")
+	public String indexPage(Model model) {
+		
+		
+		model.addAttribute("search", new SearchRequest());
+		model.addAttribute("names", reportService.getPlanNames());
+		model.addAttribute("status", reportService.getPlanStatus());
+		return "index";
+	}
+}

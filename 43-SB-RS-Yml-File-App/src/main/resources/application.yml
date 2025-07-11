@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: 43-SB-RS-Yml-File-App
+
+server:
+  port: 9090

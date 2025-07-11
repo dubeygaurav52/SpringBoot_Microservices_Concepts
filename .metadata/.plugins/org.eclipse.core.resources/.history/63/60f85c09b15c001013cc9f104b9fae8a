@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: 51-SB-MS-Welcome-Api-Eureka-Client

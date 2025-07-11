@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: 55-SB-MS-STOCK-SERVICE-REGISTARY
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false

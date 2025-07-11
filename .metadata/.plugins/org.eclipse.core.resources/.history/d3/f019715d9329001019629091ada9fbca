@@ -1,0 +1,14 @@
+package in.gaurav.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class WelcomeController {
+
+	public ModelAndView displayWelcomeMsg() {
+		ModelAndView mav=new ModelAndView();
+		
+		return mav;
+	}
+}

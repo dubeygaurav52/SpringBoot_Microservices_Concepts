@@ -1,0 +1,19 @@
+package in.gaurav.entity;
+
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "ORDR_DTLS")
+public class OrderDetails {
+
+	private String orderId;
+	
+	private String orderBy;
+	
+	private Date orderPlacedDate;
+}

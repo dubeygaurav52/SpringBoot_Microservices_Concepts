@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>About learn code with durgesh</h1>
+	<h1>We are learning springboot</h1>
+	
+	<h1 th:text="${name}"></h1>
+	<h2 th:text="${currentDate}"></h2>
+	
+	<h2>Name of the owner is <span th:text="${name}"></span> </h2>
+	
+</body>
+</html>

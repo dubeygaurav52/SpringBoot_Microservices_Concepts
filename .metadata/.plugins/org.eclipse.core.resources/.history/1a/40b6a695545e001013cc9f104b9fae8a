@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: 57-SB-MS-STOCK-CAL-API

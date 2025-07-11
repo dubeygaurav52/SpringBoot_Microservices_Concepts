@@ -1,0 +1,5 @@
+package in.gaurav.bindings;
+
+public class Customer {
+
+}

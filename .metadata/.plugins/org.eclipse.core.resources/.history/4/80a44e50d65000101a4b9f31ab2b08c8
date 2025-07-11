@@ -1,0 +1,11 @@
+package in.gaurav.utils;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+public class ExcelGenerator {
+
+	public void generate(HttpServletResponse response) {
+		
+		
+	}
+}

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: 52-SB-MS-Greet-Api-Eureka-Client
+server:
+  port: 2222

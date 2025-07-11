@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: 51-SB-MS-Welcome-Api-Eureka-Client		
+server:
+  port: 1111

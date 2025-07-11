@@ -1,0 +1,17 @@
+package in.gaurav.rest;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserRestController {
+
+	public String geetName(Integer userId) {
+		if (userId==100) {
+			return "Raju";
+		}else if (userId==101) {
+			return "Rani";
+		}else {
+			return "User Not Found";
+		}
+	}
+}

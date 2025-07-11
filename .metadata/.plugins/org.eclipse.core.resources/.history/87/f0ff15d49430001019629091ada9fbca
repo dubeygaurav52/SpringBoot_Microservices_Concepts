@@ -1,0 +1,8 @@
+package in.gaurav.bindings;
+
+public class Customer {
+
+	private Integer cid;
+	private String cname;
+	private String cemail;
+}

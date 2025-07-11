@@ -1,0 +1,23 @@
+package in.gaurav.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import in.gaurav.bindings.StockPriceResponse;
+import in.gaurav.repository.StockPriceRepository;
+
+public class StockPriceServiceImpl implements StockPriceService {
+
+	@Autowired
+	private StockPriceRepository priceRepository;
+	
+	@Override
+	public StockPriceResponse getStockePrice(String companyName) {
+		Double stockPriceByCompanyName = priceRepository.findStockPriceByCompanyName(companyName);
+		StockPriceResponse response=new StockPriceResponse();
+		response.setCompanyName(companyName);
+		response.setCompanyStockPrice(stockPriceByCompanyName);
+		
+		return response;
+	}
+
+}

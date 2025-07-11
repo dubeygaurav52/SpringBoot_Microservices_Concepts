@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: 53-SB-MS-API-Gateway

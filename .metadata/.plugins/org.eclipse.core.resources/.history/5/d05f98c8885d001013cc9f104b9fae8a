@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: 56-SB-MS-STOCK-PRICE-API

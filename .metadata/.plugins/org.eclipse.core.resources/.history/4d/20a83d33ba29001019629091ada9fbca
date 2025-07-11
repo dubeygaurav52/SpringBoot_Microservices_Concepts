@@ -1,0 +1,14 @@
+package in.gaurav.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CourseController {
+
+	public String getCourseDtls(String cname,String trainer) {
+		
+		String msg=cname+" By "+trainer+"Starting from 23-Jun-21 @6:30 AM IST";
+		
+		return msg;
+	}
+}

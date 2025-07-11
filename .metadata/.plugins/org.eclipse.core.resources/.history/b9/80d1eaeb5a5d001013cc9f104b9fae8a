@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Gateway-Api
+server:
+  port: 3333
+#Manual process to add to eureka server
+eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_URL:http://localhost:9191}/eureka/
+zuul:
+  prefix: /ms
+	routes:
+		greet:
+			path: /api1/**
+			serviceId: Greet-Api
+		welcome:
+			path: /api2/**
+			serviceId: Welcome-Api

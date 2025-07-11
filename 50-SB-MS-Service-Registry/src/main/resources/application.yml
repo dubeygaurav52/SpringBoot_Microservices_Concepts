@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: 50-SB-MS-Service-Registry
+server:
+  port: 9191
+#8761 default port number to add automatically
+eureka:
+  client:
+    register-with-eureka: false

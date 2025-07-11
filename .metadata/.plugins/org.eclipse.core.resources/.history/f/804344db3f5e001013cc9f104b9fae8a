@@ -1,0 +1,14 @@
+package in.gaurav.repository;
+
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import in.gaurav.entity.StockPrice;
+
+public interface StockPriceRepository extends JpaRepository<StockPrice, Serializable>{
+
+	@Query(value = "SELECT * FROM stock_price_dtls WHERE company_Name=companyName", nativeQuery = true)
+	public Double findStockPriceByCompanyName(String companyName);
+}

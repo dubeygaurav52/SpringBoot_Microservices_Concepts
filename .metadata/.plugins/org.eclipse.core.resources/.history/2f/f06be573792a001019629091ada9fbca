@@ -1,0 +1,19 @@
+package in.gaurav.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import in.gaurav.bindings.Product;
+
+@Controller
+public class ProductController {
+
+	public String loadForm(Model model) {
+		Product prod=new Product();
+		model.addAttribute("product", prod);
+		
+		return "index";
+		
+		
+	}
+}

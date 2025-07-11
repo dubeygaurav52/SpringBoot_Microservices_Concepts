@@ -1,0 +1,1129 @@
+package gov.sec.swat.dto.mapper;
+
+import gov.sec.swat.dto.screening.ScreenDfDataDto;
+import gov.sec.swat.dto.screening.ScreenDrsRegistrationDto;
+import gov.sec.swat.dto.screening.ScreeningCaseDto;
+import gov.sec.swat.dto.screening.ScreeningDynamicFieldsDataDto;
+import gov.sec.swat.dto.screening.ScreeningItemsToConsiderDto;
+import gov.sec.swat.dto.workspace.PermFileShort;
+import gov.sec.swat.dto.workspace.RvwAuditInfoDto;
+import gov.sec.swat.dto.workspace.RvwPreliminaryStepsWrkspDto;
+import gov.sec.swat.dto.workspace.WorkspaceReviewPermFilesDto;
+import gov.sec.swat.model.review.RvwAuditInfo;
+import gov.sec.swat.model.review.RvwAuditInfoPK;
+import gov.sec.swat.model.screening.ScreenCase;
+import gov.sec.swat.model.screening.ScreenDfData;
+import gov.sec.swat.model.screening.ScreenDrsRegistration;
+import gov.sec.swat.model.screening.ScreenRegistration;
+import gov.sec.swat.model.screening.Screening;
+import gov.sec.swat.model.support.ScreenDynamicField;
+import gov.sec.swat.model.workspace.RvwPreliminaryStepsWrksp;
+import gov.sec.swat.model.workspace.RvwPreliminaryStepsWrkspPK;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-04-30T20:20:31+0530",
+    comments = "version: 1.6.2, compiler: Eclipse JDT (IDE) 3.41.0.v20250213-1140, environment: Java 23.0.1 (Eclipse Adoptium)"
+)
+public class EntityToDtoMapperImpl implements EntityToDtoMapper {
+
+    private final DatatypeFactory datatypeFactory;
+
+    public EntityToDtoMapperImpl() {
+        try {
+            datatypeFactory = DatatypeFactory.newInstance();
+        }
+        catch ( DatatypeConfigurationException ex ) {
+            throw new RuntimeException( ex );
+        }
+    }
+
+    @Override
+    public ScreeningItemsToConsiderDto mapToRegScreeningDto(ScreenRegistration user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        ScreeningItemsToConsiderDto screeningItemsToConsiderDto = new ScreeningItemsToConsiderDto();
+
+        screeningItemsToConsiderDto.setIMandtryArbtnFedseclaw( mapToMatLaw( user.getIMandtryArbtnFedseclaw() ) );
+        screeningItemsToConsiderDto.setFMandtryArbtnFedseclaw( mapToMatLaw( user.getFMandtryArbtnFedseclaw() ) );
+        screeningItemsToConsiderDto.setIExlusiveForumProvisions( mapToMatLaw( user.getIExlusiveForumProvisions() ) );
+        screeningItemsToConsiderDto.setFExlusiveForumProvisions( mapToMatLaw( user.getFExlusiveForumProvisions() ) );
+        screeningItemsToConsiderDto.setIMandatoryArbitration( mapToMatLaw( user.getIMandatoryArbitration() ) );
+        screeningItemsToConsiderDto.setFMandatoryArbitration( mapToMatLaw( user.getFMandatoryArbitration() ) );
+        screeningItemsToConsiderDto.setIShareholderAbilityProvs( mapToMatLaw( user.getIShareholderAbilityProvs() ) );
+        screeningItemsToConsiderDto.setFShareholderAbilityProvs( mapToMatLaw( user.getFShareholderAbilityProvs() ) );
+        Long screeningId = userScreeningScreeningId( user );
+        if ( screeningId != null ) {
+            screeningItemsToConsiderDto.setScreening( String.valueOf( screeningId ) );
+        }
+        screeningItemsToConsiderDto.setAdAcceptIpoRoute( user.getAdAcceptIpoRoute() );
+        screeningItemsToConsiderDto.setAssoDirApprovedDt( user.getAssoDirApprovedDt() );
+        screeningItemsToConsiderDto.setAssoDirName( user.getAssoDirName() );
+        screeningItemsToConsiderDto.setAssoDirOtherText( user.getAssoDirOtherText() );
+        screeningItemsToConsiderDto.setAssoDirReviewFlg( user.getAssoDirReviewFlg() );
+        if ( user.getAssoDirReviewId() != null ) {
+            screeningItemsToConsiderDto.setAssoDirReviewId( user.getAssoDirReviewId().toString() );
+        }
+        screeningItemsToConsiderDto.setAssoDirRvwAddnInfo( user.getAssoDirRvwAddnInfo() );
+        screeningItemsToConsiderDto.setAsstDirApprovedDt( user.getAsstDirApprovedDt() );
+        screeningItemsToConsiderDto.setAsstDirName( user.getAsstDirName() );
+        screeningItemsToConsiderDto.setAsstDirOtherText( user.getAsstDirOtherText() );
+        screeningItemsToConsiderDto.setAsstDirReviewFlg( user.getAsstDirReviewFlg() );
+        if ( user.getAsstDirReviewId() != null ) {
+            screeningItemsToConsiderDto.setAsstDirReviewId( user.getAsstDirReviewId().toString() );
+        }
+        screeningItemsToConsiderDto.setAsstDirRvwAddnInfo( user.getAsstDirRvwAddnInfo() );
+        screeningItemsToConsiderDto.setAuditPcaobNt( user.getAuditPcaobNt() );
+        if ( user.getAuditPcaobNtFlg() != null ) {
+            screeningItemsToConsiderDto.setAuditPcaobNtFlg( Integer.parseInt( user.getAuditPcaobNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setBedbugOthReasonNt( user.getBedbugOthReasonNt() );
+        if ( user.getBedbugOthReasonNtFlg() != null ) {
+            screeningItemsToConsiderDto.setBedbugOthReasonNtFlg( Integer.parseInt( user.getBedbugOthReasonNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setCoinTokenOfferingNote( user.getCoinTokenOfferingNote() );
+        if ( user.getCoinTokenOfferingNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setCoinTokenOfferingNoteFlg( Integer.parseInt( user.getCoinTokenOfferingNoteFlg() ) );
+        }
+        screeningItemsToConsiderDto.setComSeeksNseListingNote( user.getComSeeksNseListingNote() );
+        if ( user.getComSeeksNseListingNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setComSeeksNseListingNoteFlg( Integer.parseInt( user.getComSeeksNseListingNoteFlg() ) );
+        }
+        screeningItemsToConsiderDto.setCompCrrntFilPrdicNt( user.getCompCrrntFilPrdicNt() );
+        if ( user.getCompCrrntFilPrdicNtFlg() != null ) {
+            screeningItemsToConsiderDto.setCompCrrntFilPrdicNtFlg( Integer.parseInt( user.getCompCrrntFilPrdicNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setDelayAmendOmittedNt( user.getDelayAmendOmittedNt() );
+        if ( user.getDelayAmendOmittedNtFlg() != null ) {
+            screeningItemsToConsiderDto.setDelayAmendOmittedNtFlg( Integer.parseInt( user.getDelayAmendOmittedNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setDivEnfInterestNt( user.getDivEnfInterestNt() );
+        if ( user.getDivEnfInterestNtFlg() != null ) {
+            screeningItemsToConsiderDto.setDivEnfInterestNtFlg( Integer.parseInt( user.getDivEnfInterestNtFlg() ) );
+        }
+        if ( user.getExlusiveForumProvisionsFlg() != null ) {
+            screeningItemsToConsiderDto.setExlusiveForumProvisionsFlg( Integer.parseInt( user.getExlusiveForumProvisionsFlg() ) );
+        }
+        screeningItemsToConsiderDto.setExlusiveForumProvisionsNt( user.getExlusiveForumProvisionsNt() );
+        if ( user.getFAuditPcaob() != null ) {
+            screeningItemsToConsiderDto.setFAuditPcaob( Boolean.parseBoolean( user.getFAuditPcaob() ) );
+        }
+        screeningItemsToConsiderDto.setFBasisForTransfer( user.getFBasisForTransfer() );
+        if ( user.getFBedbugOthReason() != null ) {
+            screeningItemsToConsiderDto.setFBedbugOthReason( Boolean.parseBoolean( user.getFBedbugOthReason() ) );
+        }
+        if ( user.getFBypassScreening() != null ) {
+            screeningItemsToConsiderDto.setFBypassScreening( Integer.parseInt( user.getFBypassScreening() ) );
+        }
+        if ( user.getFCoinTokenOffering() != null ) {
+            screeningItemsToConsiderDto.setFCoinTokenOffering( Integer.parseInt( user.getFCoinTokenOffering() ) );
+        }
+        if ( user.getFComSeeksNseListing() != null ) {
+            screeningItemsToConsiderDto.setFComSeeksNseListing( Integer.parseInt( user.getFComSeeksNseListing() ) );
+        }
+        screeningItemsToConsiderDto.setFCompContName( user.getFCompContName() );
+        if ( user.getFCompCrrntFilPrdic() != null ) {
+            screeningItemsToConsiderDto.setFCompCrrntFilPrdic( Boolean.parseBoolean( user.getFCompCrrntFilPrdic() ) );
+        }
+        screeningItemsToConsiderDto.setFContDt( user.getFContDt() );
+        if ( user.getFDelayAmendOmitted() != null ) {
+            screeningItemsToConsiderDto.setFDelayAmendOmitted( Boolean.parseBoolean( user.getFDelayAmendOmitted() ) );
+        }
+        if ( user.getFDivEnfInterest() != null ) {
+            screeningItemsToConsiderDto.setFDivEnfInterest( Boolean.parseBoolean( user.getFDivEnfInterest() ) );
+        }
+        screeningItemsToConsiderDto.setFDrsDocType( user.getFDrsDocType() );
+        if ( user.getFEigTrnfrToOthAdOff() != null ) {
+            screeningItemsToConsiderDto.setFEigTrnfrToOthAdOff( Boolean.parseBoolean( user.getFEigTrnfrToOthAdOff() ) );
+        }
+        screeningItemsToConsiderDto.setFEnterCtrNumber( user.getFEnterCtrNumber() );
+        if ( user.getFFilingAppears() != null ) {
+            screeningItemsToConsiderDto.setFFilingAppears( Boolean.parseBoolean( user.getFFilingAppears() ) );
+        }
+        if ( user.getFFinancialStatement() != null ) {
+            screeningItemsToConsiderDto.setFFinancialStatement( Boolean.parseBoolean( user.getFFinancialStatement() ) );
+        }
+        if ( user.getFFirstScreenerIndctIpo() != null ) {
+            screeningItemsToConsiderDto.setFFirstScreenerIndctIpo( Integer.parseInt( user.getFFirstScreenerIndctIpo() ) );
+        }
+        screeningItemsToConsiderDto.setFIpo( user.getFIpo() );
+        screeningItemsToConsiderDto.setFIpoAddnInfo( user.getFIpoAddnInfo() );
+        screeningItemsToConsiderDto.setFIpoOrInitOrSpacMrgr( user.getFIpoOrInitOrSpacMrgr() );
+        if ( user.getFIsExxonCapExcngOffer() != null ) {
+            screeningItemsToConsiderDto.setFIsExxonCapExcngOffer( Integer.parseInt( user.getFIsExxonCapExcngOffer() ) );
+        }
+        if ( user.getFIsTier2offering() != null ) {
+            screeningItemsToConsiderDto.setFIsTier2offering( Integer.parseInt( user.getFIsTier2offering() ) );
+        }
+        if ( user.getFIssuerEligibility() != null ) {
+            screeningItemsToConsiderDto.setFIssuerEligibility( Integer.parseInt( user.getFIssuerEligibility() ) );
+        }
+        if ( user.getFMatrlAcqNonReptComp() != null ) {
+            screeningItemsToConsiderDto.setFMatrlAcqNonReptComp( Boolean.parseBoolean( user.getFMatrlAcqNonReptComp() ) );
+        }
+        screeningItemsToConsiderDto.setFNovelUniqueOption( user.getFNovelUniqueOption() );
+        if ( user.getFOfferingEligibility() != null ) {
+            screeningItemsToConsiderDto.setFOfferingEligibility( Integer.parseInt( user.getFOfferingEligibility() ) );
+        }
+        screeningItemsToConsiderDto.setFOfferingType( user.getFOfferingType() );
+        if ( user.getFOthFactDclsrWrrnt() != null ) {
+            screeningItemsToConsiderDto.setFOthFactDclsrWrrnt( Boolean.parseBoolean( user.getFOthFactDclsrWrrnt() ) );
+        }
+        if ( user.getFOutstandingCmmnt() != null ) {
+            screeningItemsToConsiderDto.setFOutstandingCmmnt( Boolean.parseBoolean( user.getFOutstandingCmmnt() ) );
+        }
+        if ( user.getFPendConfTremtReq() != null ) {
+            screeningItemsToConsiderDto.setFPendConfTremtReq( Boolean.parseBoolean( user.getFPendConfTremtReq() ) );
+        }
+        screeningItemsToConsiderDto.setFPreprDrsRejectLtr( user.getFPreprDrsRejectLtr() );
+        screeningItemsToConsiderDto.setFRepIssurOngoingOffrngs( user.getFRepIssurOngoingOffrngs() );
+        if ( user.getFReviewLvlId() != null ) {
+            screeningItemsToConsiderDto.setFReviewLvlId( user.getFReviewLvlId().intValue() );
+        }
+        screeningItemsToConsiderDto.setFRvwAddnInfo( user.getFRvwAddnInfo() );
+        screeningItemsToConsiderDto.setFRvwReason( user.getFRvwReason() );
+        if ( user.getFScreenerSubmit() != null ) {
+            screeningItemsToConsiderDto.setFScreenerSubmit( Integer.parseInt( user.getFScreenerSubmit() ) );
+        }
+        if ( user.getFSecuritiesEligibility() != null ) {
+            screeningItemsToConsiderDto.setFSecuritiesEligibility( Integer.parseInt( user.getFSecuritiesEligibility() ) );
+        }
+        if ( user.getFSendToAdOffCrfm() != null ) {
+            screeningItemsToConsiderDto.setFSendToAdOffCrfm( Integer.parseInt( user.getFSendToAdOffCrfm() ) );
+        }
+        screeningItemsToConsiderDto.setFShouldBeBedbug( user.getFShouldBeBedbug() );
+        if ( user.getFShouldDedbugReason() != null ) {
+            screeningItemsToConsiderDto.setFShouldDedbugReason( Integer.parseInt( user.getFShouldDedbugReason() ) );
+        }
+        if ( user.getFTcr() != null ) {
+            screeningItemsToConsiderDto.setFTcr( Boolean.parseBoolean( user.getFTcr() ) );
+        }
+        screeningItemsToConsiderDto.setFTcrNumber( user.getFTcrNumber() );
+        if ( user.getFUniqueTrans() != null ) {
+            screeningItemsToConsiderDto.setFUniqueTrans( Boolean.parseBoolean( user.getFUniqueTrans() ) );
+        }
+        screeningItemsToConsiderDto.setFilingAppearsNt( user.getFilingAppearsNt() );
+        if ( user.getFilingAppearsNtFlg() != null ) {
+            screeningItemsToConsiderDto.setFilingAppearsNtFlg( Integer.parseInt( user.getFilingAppearsNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setFinancialStatementNt( user.getFinancialStatementNt() );
+        if ( user.getFinancialStatementNtFlg() != null ) {
+            screeningItemsToConsiderDto.setFinancialStatementNtFlg( Integer.parseInt( user.getFinancialStatementNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setFirstScreenerName( user.getFirstScreenerName() );
+        screeningItemsToConsiderDto.setFirstScreenerSaveDt( user.getFirstScreenerSaveDt() );
+        if ( user.getIAuditPcaob() != null ) {
+            screeningItemsToConsiderDto.setIAuditPcaob( Boolean.parseBoolean( user.getIAuditPcaob() ) );
+        }
+        screeningItemsToConsiderDto.setIBasisForTransfer( user.getIBasisForTransfer() );
+        if ( user.getIBedbugOthReason() != null ) {
+            screeningItemsToConsiderDto.setIBedbugOthReason( Boolean.parseBoolean( user.getIBedbugOthReason() ) );
+        }
+        if ( user.getIBypassScreening() != null ) {
+            screeningItemsToConsiderDto.setIBypassScreening( Integer.parseInt( user.getIBypassScreening() ) );
+        }
+        if ( user.getICoinTokenOffering() != null ) {
+            screeningItemsToConsiderDto.setICoinTokenOffering( Integer.parseInt( user.getICoinTokenOffering() ) );
+        }
+        if ( user.getIComSeeksNseListing() != null ) {
+            screeningItemsToConsiderDto.setIComSeeksNseListing( Integer.parseInt( user.getIComSeeksNseListing() ) );
+        }
+        screeningItemsToConsiderDto.setICompContName( user.getICompContName() );
+        if ( user.getICompCrrntFilPrdic() != null ) {
+            screeningItemsToConsiderDto.setICompCrrntFilPrdic( Boolean.parseBoolean( user.getICompCrrntFilPrdic() ) );
+        }
+        screeningItemsToConsiderDto.setIContDt( user.getIContDt() );
+        if ( user.getIDelayAmendOmitted() != null ) {
+            screeningItemsToConsiderDto.setIDelayAmendOmitted( Boolean.parseBoolean( user.getIDelayAmendOmitted() ) );
+        }
+        if ( user.getIDivEnfInterest() != null ) {
+            screeningItemsToConsiderDto.setIDivEnfInterest( Boolean.parseBoolean( user.getIDivEnfInterest() ) );
+        }
+        screeningItemsToConsiderDto.setIDrsDocType( user.getIDrsDocType() );
+        if ( user.getIElgTrnfrToOthAdOff() != null ) {
+            screeningItemsToConsiderDto.setIElgTrnfrToOthAdOff( Boolean.parseBoolean( user.getIElgTrnfrToOthAdOff() ) );
+        }
+        screeningItemsToConsiderDto.setIEnterCtrNumber( user.getIEnterCtrNumber() );
+        if ( user.getIFilingAppears() != null ) {
+            screeningItemsToConsiderDto.setIFilingAppears( Boolean.parseBoolean( user.getIFilingAppears() ) );
+        }
+        if ( user.getIFinancialStatement() != null ) {
+            screeningItemsToConsiderDto.setIFinancialStatement( Boolean.parseBoolean( user.getIFinancialStatement() ) );
+        }
+        if ( user.getIFirstScreenerIndctIpo() != null ) {
+            screeningItemsToConsiderDto.setIFirstScreenerIndctIpo( Integer.parseInt( user.getIFirstScreenerIndctIpo() ) );
+        }
+        screeningItemsToConsiderDto.setIIpo( user.getIIpo() );
+        screeningItemsToConsiderDto.setIIpoAddnInfo( user.getIIpoAddnInfo() );
+        screeningItemsToConsiderDto.setIIpoOrInitOrSpacMrgr( user.getIIpoOrInitOrSpacMrgr() );
+        if ( user.getIIsExxonCapExcngOffer() != null ) {
+            screeningItemsToConsiderDto.setIIsExxonCapExcngOffer( Integer.parseInt( user.getIIsExxonCapExcngOffer() ) );
+        }
+        if ( user.getIIsTier2offering() != null ) {
+            screeningItemsToConsiderDto.setIIsTier2offering( Integer.parseInt( user.getIIsTier2offering() ) );
+        }
+        if ( user.getIIssuerEligibility() != null ) {
+            screeningItemsToConsiderDto.setIIssuerEligibility( Integer.parseInt( user.getIIssuerEligibility() ) );
+        }
+        if ( user.getIMatrlAcqNonReptComp() != null ) {
+            screeningItemsToConsiderDto.setIMatrlAcqNonReptComp( Boolean.parseBoolean( user.getIMatrlAcqNonReptComp() ) );
+        }
+        screeningItemsToConsiderDto.setINovelUniqueOption( user.getINovelUniqueOption() );
+        if ( user.getIOfferingEligibility() != null ) {
+            screeningItemsToConsiderDto.setIOfferingEligibility( Integer.parseInt( user.getIOfferingEligibility() ) );
+        }
+        screeningItemsToConsiderDto.setIOfferingType( user.getIOfferingType() );
+        if ( user.getIOthFactDclsrWrrnt() != null ) {
+            screeningItemsToConsiderDto.setIOthFactDclsrWrrnt( Boolean.parseBoolean( user.getIOthFactDclsrWrrnt() ) );
+        }
+        if ( user.getIOutstandingCmmnt() != null ) {
+            screeningItemsToConsiderDto.setIOutstandingCmmnt( Boolean.parseBoolean( user.getIOutstandingCmmnt() ) );
+        }
+        if ( user.getIPendConfTremtReq() != null ) {
+            screeningItemsToConsiderDto.setIPendConfTremtReq( Boolean.parseBoolean( user.getIPendConfTremtReq() ) );
+        }
+        screeningItemsToConsiderDto.setIPreprDrsRejectLtr( user.getIPreprDrsRejectLtr() );
+        screeningItemsToConsiderDto.setIRepIssurOngoingOffrngs( user.getIRepIssurOngoingOffrngs() );
+        if ( user.getIReviewLvlId() != null ) {
+            screeningItemsToConsiderDto.setIReviewLvlId( user.getIReviewLvlId().intValue() );
+        }
+        screeningItemsToConsiderDto.setIRvwAddnInfo( user.getIRvwAddnInfo() );
+        screeningItemsToConsiderDto.setIRvwLvlAddInfoOthrText( user.getIRvwLvlAddInfoOthrText() );
+        screeningItemsToConsiderDto.setIRvwReason( user.getIRvwReason() );
+        if ( user.getIScreenerSubmit() != null ) {
+            screeningItemsToConsiderDto.setIScreenerSubmit( Integer.parseInt( user.getIScreenerSubmit() ) );
+        }
+        if ( user.getISecuritiesEligibility() != null ) {
+            screeningItemsToConsiderDto.setISecuritiesEligibility( Integer.parseInt( user.getISecuritiesEligibility() ) );
+        }
+        if ( user.getISendToAdOffCrfm() != null ) {
+            screeningItemsToConsiderDto.setISendToAdOffCrfm( Integer.parseInt( user.getISendToAdOffCrfm() ) );
+        }
+        screeningItemsToConsiderDto.setIShouldBeBedbug( user.getIShouldBeBedbug() );
+        if ( user.getIShouldDedbugReason() != null ) {
+            screeningItemsToConsiderDto.setIShouldDedbugReason( Integer.parseInt( user.getIShouldDedbugReason() ) );
+        }
+        screeningItemsToConsiderDto.setITcrNumber( user.getITcrNumber() );
+        if ( user.getITcrvalue() != null ) {
+            screeningItemsToConsiderDto.setITcrvalue( Boolean.parseBoolean( user.getITcrvalue() ) );
+        }
+        if ( user.getIUniqueTrans() != null ) {
+            screeningItemsToConsiderDto.setIUniqueTrans( Boolean.parseBoolean( user.getIUniqueTrans() ) );
+        }
+        screeningItemsToConsiderDto.setIsTier2offeringNote( user.getIsTier2offeringNote() );
+        if ( user.getIsTier2offeringNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setIsTier2offeringNoteFlg( Integer.parseInt( user.getIsTier2offeringNoteFlg() ) );
+        }
+        screeningItemsToConsiderDto.setIssuerEligibilityNote( user.getIssuerEligibilityNote() );
+        if ( user.getIssuerEligibilityNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setIssuerEligibilityNoteFlg( Integer.parseInt( user.getIssuerEligibilityNoteFlg() ) );
+        }
+        if ( user.getMandatoryArbitrationFlg() != null ) {
+            screeningItemsToConsiderDto.setMandatoryArbitrationFlg( Integer.parseInt( user.getMandatoryArbitrationFlg() ) );
+        }
+        screeningItemsToConsiderDto.setMandatoryArbitrationNt( user.getMandatoryArbitrationNt() );
+        screeningItemsToConsiderDto.setMandtryArbtnFedseclawNote( user.getMandtryArbtnFedseclawNote() );
+        if ( user.getMandtryArbtnFedseclawnoteflg() != null ) {
+            screeningItemsToConsiderDto.setMandtryArbtnFedseclawnoteflg( Integer.parseInt( user.getMandtryArbtnFedseclawnoteflg() ) );
+        }
+        screeningItemsToConsiderDto.setMatrlAcqNonReptCompNt( user.getMatrlAcqNonReptCompNt() );
+        if ( user.getMatrlAcqNonReptCompNtFlg() != null ) {
+            screeningItemsToConsiderDto.setMatrlAcqNonReptCompNtFlg( Integer.parseInt( user.getMatrlAcqNonReptCompNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setNovelUniqueOptionText( user.getNovelUniqueOptionText() );
+        screeningItemsToConsiderDto.setNrsiLastDateChecked( user.getNrsiLastDateChecked() );
+        screeningItemsToConsiderDto.setOfferingEligibilityNote( user.getOfferingEligibilityNote() );
+        if ( user.getOfferingEligibilityNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setOfferingEligibilityNoteFlg( Integer.parseInt( user.getOfferingEligibilityNoteFlg() ) );
+        }
+        screeningItemsToConsiderDto.setOthFactDclsrWrrntNt( user.getOthFactDclsrWrrntNt() );
+        if ( user.getOthFactDclsrWrrntNtFlg() != null ) {
+            screeningItemsToConsiderDto.setOthFactDclsrWrrntNtFlg( Integer.parseInt( user.getOthFactDclsrWrrntNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setOutstandingCmmntNt( user.getOutstandingCmmntNt() );
+        if ( user.getOutstandingCmmntNtFlg() != null ) {
+            screeningItemsToConsiderDto.setOutstandingCmmntNtFlg( Integer.parseInt( user.getOutstandingCmmntNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setPendConfTremtReqNt( user.getPendConfTremtReqNt() );
+        if ( user.getPendConfTremtReqNtFlg() != null ) {
+            screeningItemsToConsiderDto.setPendConfTremtReqNtFlg( Integer.parseInt( user.getPendConfTremtReqNtFlg() ) );
+        }
+        screeningItemsToConsiderDto.setRepIssurOngoingOffrngsNt( user.getRepIssurOngoingOffrngsNt() );
+        screeningItemsToConsiderDto.setRepIssurOngoingOffrngsNtFlg( user.getRepIssurOngoingOffrngsNtFlg() );
+        screeningItemsToConsiderDto.setScreenRegId( (int) user.getScreenRegId() );
+        screeningItemsToConsiderDto.setSecondScreenerName( user.getSecondScreenerName() );
+        screeningItemsToConsiderDto.setSecondScreenerSaveDt( user.getSecondScreenerSaveDt() );
+        screeningItemsToConsiderDto.setSecuritiesEligibilityNote( user.getSecuritiesEligibilityNote() );
+        if ( user.getSecuritiesEligibilityNoteflg() != null ) {
+            screeningItemsToConsiderDto.setSecuritiesEligibilityNoteflg( Integer.parseInt( user.getSecuritiesEligibilityNoteflg() ) );
+        }
+        screeningItemsToConsiderDto.setSeniorScreenerSeniorAttributeValue( user.getSeniorScreenerSeniorAttributeValue() );
+        if ( user.getShareholderAbilityProvsFlg() != null ) {
+            screeningItemsToConsiderDto.setShareholderAbilityProvsFlg( Integer.parseInt( user.getShareholderAbilityProvsFlg() ) );
+        }
+        screeningItemsToConsiderDto.setShareholderAbilityProvsNt( user.getShareholderAbilityProvsNt() );
+        screeningItemsToConsiderDto.setTcrLastDateChecked( user.getTcrLastDateChecked() );
+        screeningItemsToConsiderDto.setTcrNote( user.getTcrNote() );
+        if ( user.getTcrNoteFlg() != null ) {
+            screeningItemsToConsiderDto.setTcrNoteFlg( Integer.parseInt( user.getTcrNoteFlg() ) );
+        }
+        screeningItemsToConsiderDto.setTierRegA( user.getTierRegA() );
+        screeningItemsToConsiderDto.setUniqueTransNt( user.getUniqueTransNt() );
+        if ( user.getUniqueTransNtFlg() != null ) {
+            screeningItemsToConsiderDto.setUniqueTransNtFlg( Integer.parseInt( user.getUniqueTransNtFlg() ) );
+        }
+
+        return screeningItemsToConsiderDto;
+    }
+
+    @Override
+    public ScreenRegistration mapToRegScreening(ScreeningItemsToConsiderDto user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        ScreenRegistration screenRegistration = new ScreenRegistration();
+
+        screenRegistration.setIMandtryArbtnFedseclaw( mapToMatLaw( user.getIMandtryArbtnFedseclaw() ) );
+        screenRegistration.setFMandtryArbtnFedseclaw( mapToMatLaw( user.getFMandtryArbtnFedseclaw() ) );
+        screenRegistration.setIExlusiveForumProvisions( mapToMatLaw( user.getIExlusiveForumProvisions() ) );
+        screenRegistration.setFExlusiveForumProvisions( mapToMatLaw( user.getFExlusiveForumProvisions() ) );
+        screenRegistration.setIMandatoryArbitration( mapToMatLaw( user.getIMandatoryArbitration() ) );
+        screenRegistration.setFMandatoryArbitration( mapToMatLaw( user.getFMandatoryArbitration() ) );
+        screenRegistration.setIShareholderAbilityProvs( mapToMatLaw( user.getIShareholderAbilityProvs() ) );
+        screenRegistration.setFShareholderAbilityProvs( mapToMatLaw( user.getFShareholderAbilityProvs() ) );
+        screenRegistration.setAdAcceptIpoRoute( user.getAdAcceptIpoRoute() );
+        screenRegistration.setAssoDirApprovedDt( user.getAssoDirApprovedDt() );
+        screenRegistration.setAssoDirName( user.getAssoDirName() );
+        screenRegistration.setAssoDirOtherText( user.getAssoDirOtherText() );
+        screenRegistration.setAssoDirReviewFlg( user.getAssoDirReviewFlg() );
+        if ( user.getAssoDirReviewId() != null ) {
+            screenRegistration.setAssoDirReviewId( new BigDecimal( user.getAssoDirReviewId() ) );
+        }
+        screenRegistration.setAssoDirRvwAddnInfo( user.getAssoDirRvwAddnInfo() );
+        screenRegistration.setAsstDirApprovedDt( user.getAsstDirApprovedDt() );
+        screenRegistration.setAsstDirName( user.getAsstDirName() );
+        screenRegistration.setAsstDirOtherText( user.getAsstDirOtherText() );
+        screenRegistration.setAsstDirReviewFlg( user.getAsstDirReviewFlg() );
+        if ( user.getAsstDirReviewId() != null ) {
+            screenRegistration.setAsstDirReviewId( new BigDecimal( user.getAsstDirReviewId() ) );
+        }
+        screenRegistration.setAsstDirRvwAddnInfo( user.getAsstDirRvwAddnInfo() );
+        screenRegistration.setAuditPcaobNt( user.getAuditPcaobNt() );
+        if ( user.getAuditPcaobNtFlg() != null ) {
+            screenRegistration.setAuditPcaobNtFlg( String.valueOf( user.getAuditPcaobNtFlg() ) );
+        }
+        screenRegistration.setBedbugOthReasonNt( user.getBedbugOthReasonNt() );
+        if ( user.getBedbugOthReasonNtFlg() != null ) {
+            screenRegistration.setBedbugOthReasonNtFlg( String.valueOf( user.getBedbugOthReasonNtFlg() ) );
+        }
+        screenRegistration.setCoinTokenOfferingNote( user.getCoinTokenOfferingNote() );
+        if ( user.getCoinTokenOfferingNoteFlg() != null ) {
+            screenRegistration.setCoinTokenOfferingNoteFlg( String.valueOf( user.getCoinTokenOfferingNoteFlg() ) );
+        }
+        screenRegistration.setComSeeksNseListingNote( user.getComSeeksNseListingNote() );
+        if ( user.getComSeeksNseListingNoteFlg() != null ) {
+            screenRegistration.setComSeeksNseListingNoteFlg( String.valueOf( user.getComSeeksNseListingNoteFlg() ) );
+        }
+        screenRegistration.setCompCrrntFilPrdicNt( user.getCompCrrntFilPrdicNt() );
+        if ( user.getCompCrrntFilPrdicNtFlg() != null ) {
+            screenRegistration.setCompCrrntFilPrdicNtFlg( String.valueOf( user.getCompCrrntFilPrdicNtFlg() ) );
+        }
+        screenRegistration.setDelayAmendOmittedNt( user.getDelayAmendOmittedNt() );
+        if ( user.getDelayAmendOmittedNtFlg() != null ) {
+            screenRegistration.setDelayAmendOmittedNtFlg( String.valueOf( user.getDelayAmendOmittedNtFlg() ) );
+        }
+        screenRegistration.setDivEnfInterestNt( user.getDivEnfInterestNt() );
+        if ( user.getDivEnfInterestNtFlg() != null ) {
+            screenRegistration.setDivEnfInterestNtFlg( String.valueOf( user.getDivEnfInterestNtFlg() ) );
+        }
+        if ( user.getExlusiveForumProvisionsFlg() != null ) {
+            screenRegistration.setExlusiveForumProvisionsFlg( String.valueOf( user.getExlusiveForumProvisionsFlg() ) );
+        }
+        screenRegistration.setExlusiveForumProvisionsNt( user.getExlusiveForumProvisionsNt() );
+        if ( user.getFAuditPcaob() != null ) {
+            screenRegistration.setFAuditPcaob( String.valueOf( user.getFAuditPcaob() ) );
+        }
+        screenRegistration.setFBasisForTransfer( user.getFBasisForTransfer() );
+        if ( user.getFBedbugOthReason() != null ) {
+            screenRegistration.setFBedbugOthReason( String.valueOf( user.getFBedbugOthReason() ) );
+        }
+        if ( user.getFBypassScreening() != null ) {
+            screenRegistration.setFBypassScreening( String.valueOf( user.getFBypassScreening() ) );
+        }
+        if ( user.getFCoinTokenOffering() != null ) {
+            screenRegistration.setFCoinTokenOffering( String.valueOf( user.getFCoinTokenOffering() ) );
+        }
+        if ( user.getFComSeeksNseListing() != null ) {
+            screenRegistration.setFComSeeksNseListing( String.valueOf( user.getFComSeeksNseListing() ) );
+        }
+        screenRegistration.setFCompContName( user.getFCompContName() );
+        if ( user.getFCompCrrntFilPrdic() != null ) {
+            screenRegistration.setFCompCrrntFilPrdic( String.valueOf( user.getFCompCrrntFilPrdic() ) );
+        }
+        screenRegistration.setFContDt( user.getFContDt() );
+        if ( user.getFDelayAmendOmitted() != null ) {
+            screenRegistration.setFDelayAmendOmitted( String.valueOf( user.getFDelayAmendOmitted() ) );
+        }
+        if ( user.getFDivEnfInterest() != null ) {
+            screenRegistration.setFDivEnfInterest( String.valueOf( user.getFDivEnfInterest() ) );
+        }
+        screenRegistration.setFDrsDocType( user.getFDrsDocType() );
+        if ( user.getFEigTrnfrToOthAdOff() != null ) {
+            screenRegistration.setFEigTrnfrToOthAdOff( String.valueOf( user.getFEigTrnfrToOthAdOff() ) );
+        }
+        screenRegistration.setFEnterCtrNumber( user.getFEnterCtrNumber() );
+        if ( user.getFFilingAppears() != null ) {
+            screenRegistration.setFFilingAppears( String.valueOf( user.getFFilingAppears() ) );
+        }
+        if ( user.getFFinancialStatement() != null ) {
+            screenRegistration.setFFinancialStatement( String.valueOf( user.getFFinancialStatement() ) );
+        }
+        if ( user.getFFirstScreenerIndctIpo() != null ) {
+            screenRegistration.setFFirstScreenerIndctIpo( String.valueOf( user.getFFirstScreenerIndctIpo() ) );
+        }
+        screenRegistration.setFIpo( user.getFIpo() );
+        screenRegistration.setFIpoAddnInfo( user.getFIpoAddnInfo() );
+        screenRegistration.setFIpoOrInitOrSpacMrgr( user.getFIpoOrInitOrSpacMrgr() );
+        if ( user.getFIsExxonCapExcngOffer() != null ) {
+            screenRegistration.setFIsExxonCapExcngOffer( String.valueOf( user.getFIsExxonCapExcngOffer() ) );
+        }
+        if ( user.getFIsTier2offering() != null ) {
+            screenRegistration.setFIsTier2offering( String.valueOf( user.getFIsTier2offering() ) );
+        }
+        if ( user.getFIssuerEligibility() != null ) {
+            screenRegistration.setFIssuerEligibility( String.valueOf( user.getFIssuerEligibility() ) );
+        }
+        if ( user.getFMatrlAcqNonReptComp() != null ) {
+            screenRegistration.setFMatrlAcqNonReptComp( String.valueOf( user.getFMatrlAcqNonReptComp() ) );
+        }
+        screenRegistration.setFNovelUniqueOption( user.getFNovelUniqueOption() );
+        if ( user.getFOfferingEligibility() != null ) {
+            screenRegistration.setFOfferingEligibility( String.valueOf( user.getFOfferingEligibility() ) );
+        }
+        screenRegistration.setFOfferingType( user.getFOfferingType() );
+        if ( user.getFOthFactDclsrWrrnt() != null ) {
+            screenRegistration.setFOthFactDclsrWrrnt( String.valueOf( user.getFOthFactDclsrWrrnt() ) );
+        }
+        if ( user.getFOutstandingCmmnt() != null ) {
+            screenRegistration.setFOutstandingCmmnt( String.valueOf( user.getFOutstandingCmmnt() ) );
+        }
+        if ( user.getFPendConfTremtReq() != null ) {
+            screenRegistration.setFPendConfTremtReq( String.valueOf( user.getFPendConfTremtReq() ) );
+        }
+        screenRegistration.setFPreprDrsRejectLtr( user.getFPreprDrsRejectLtr() );
+        screenRegistration.setFRepIssurOngoingOffrngs( user.getFRepIssurOngoingOffrngs() );
+        if ( user.getFReviewLvlId() != null ) {
+            screenRegistration.setFReviewLvlId( BigDecimal.valueOf( user.getFReviewLvlId() ) );
+        }
+        screenRegistration.setFRvwAddnInfo( user.getFRvwAddnInfo() );
+        screenRegistration.setFRvwReason( user.getFRvwReason() );
+        if ( user.getFScreenerSubmit() != null ) {
+            screenRegistration.setFScreenerSubmit( String.valueOf( user.getFScreenerSubmit() ) );
+        }
+        if ( user.getFSecuritiesEligibility() != null ) {
+            screenRegistration.setFSecuritiesEligibility( String.valueOf( user.getFSecuritiesEligibility() ) );
+        }
+        if ( user.getFSendToAdOffCrfm() != null ) {
+            screenRegistration.setFSendToAdOffCrfm( String.valueOf( user.getFSendToAdOffCrfm() ) );
+        }
+        screenRegistration.setFShouldBeBedbug( user.getFShouldBeBedbug() );
+        if ( user.getFShouldDedbugReason() != null ) {
+            screenRegistration.setFShouldDedbugReason( String.valueOf( user.getFShouldDedbugReason() ) );
+        }
+        if ( user.getFTcr() != null ) {
+            screenRegistration.setFTcr( String.valueOf( user.getFTcr() ) );
+        }
+        screenRegistration.setFTcrNumber( user.getFTcrNumber() );
+        screenRegistration.setFUniqueTrans( String.valueOf( user.isFUniqueTrans() ) );
+        screenRegistration.setFilingAppearsNt( user.getFilingAppearsNt() );
+        if ( user.getFilingAppearsNtFlg() != null ) {
+            screenRegistration.setFilingAppearsNtFlg( String.valueOf( user.getFilingAppearsNtFlg() ) );
+        }
+        screenRegistration.setFinancialStatementNt( user.getFinancialStatementNt() );
+        if ( user.getFinancialStatementNtFlg() != null ) {
+            screenRegistration.setFinancialStatementNtFlg( String.valueOf( user.getFinancialStatementNtFlg() ) );
+        }
+        screenRegistration.setFirstScreenerName( user.getFirstScreenerName() );
+        screenRegistration.setFirstScreenerSaveDt( user.getFirstScreenerSaveDt() );
+        if ( user.getIAuditPcaob() != null ) {
+            screenRegistration.setIAuditPcaob( String.valueOf( user.getIAuditPcaob() ) );
+        }
+        screenRegistration.setIBasisForTransfer( user.getIBasisForTransfer() );
+        if ( user.getIBedbugOthReason() != null ) {
+            screenRegistration.setIBedbugOthReason( String.valueOf( user.getIBedbugOthReason() ) );
+        }
+        if ( user.getIBypassScreening() != null ) {
+            screenRegistration.setIBypassScreening( String.valueOf( user.getIBypassScreening() ) );
+        }
+        if ( user.getICoinTokenOffering() != null ) {
+            screenRegistration.setICoinTokenOffering( String.valueOf( user.getICoinTokenOffering() ) );
+        }
+        if ( user.getIComSeeksNseListing() != null ) {
+            screenRegistration.setIComSeeksNseListing( String.valueOf( user.getIComSeeksNseListing() ) );
+        }
+        screenRegistration.setICompContName( user.getICompContName() );
+        if ( user.getICompCrrntFilPrdic() != null ) {
+            screenRegistration.setICompCrrntFilPrdic( String.valueOf( user.getICompCrrntFilPrdic() ) );
+        }
+        if ( user.getIContDt() != null ) {
+            screenRegistration.setIContDt( new Timestamp( user.getIContDt().getTime() ) );
+        }
+        if ( user.getIDelayAmendOmitted() != null ) {
+            screenRegistration.setIDelayAmendOmitted( String.valueOf( user.getIDelayAmendOmitted() ) );
+        }
+        if ( user.getIDivEnfInterest() != null ) {
+            screenRegistration.setIDivEnfInterest( String.valueOf( user.getIDivEnfInterest() ) );
+        }
+        screenRegistration.setIDrsDocType( user.getIDrsDocType() );
+        if ( user.getIElgTrnfrToOthAdOff() != null ) {
+            screenRegistration.setIElgTrnfrToOthAdOff( String.valueOf( user.getIElgTrnfrToOthAdOff() ) );
+        }
+        screenRegistration.setIEnterCtrNumber( user.getIEnterCtrNumber() );
+        if ( user.getIFilingAppears() != null ) {
+            screenRegistration.setIFilingAppears( String.valueOf( user.getIFilingAppears() ) );
+        }
+        if ( user.getIFinancialStatement() != null ) {
+            screenRegistration.setIFinancialStatement( String.valueOf( user.getIFinancialStatement() ) );
+        }
+        if ( user.getIFirstScreenerIndctIpo() != null ) {
+            screenRegistration.setIFirstScreenerIndctIpo( String.valueOf( user.getIFirstScreenerIndctIpo() ) );
+        }
+        screenRegistration.setIIpo( user.getIIpo() );
+        screenRegistration.setIIpoAddnInfo( user.getIIpoAddnInfo() );
+        screenRegistration.setIIpoOrInitOrSpacMrgr( user.getIIpoOrInitOrSpacMrgr() );
+        if ( user.getIIsExxonCapExcngOffer() != null ) {
+            screenRegistration.setIIsExxonCapExcngOffer( String.valueOf( user.getIIsExxonCapExcngOffer() ) );
+        }
+        if ( user.getIIsTier2offering() != null ) {
+            screenRegistration.setIIsTier2offering( String.valueOf( user.getIIsTier2offering() ) );
+        }
+        if ( user.getIIssuerEligibility() != null ) {
+            screenRegistration.setIIssuerEligibility( String.valueOf( user.getIIssuerEligibility() ) );
+        }
+        if ( user.getIMatrlAcqNonReptComp() != null ) {
+            screenRegistration.setIMatrlAcqNonReptComp( String.valueOf( user.getIMatrlAcqNonReptComp() ) );
+        }
+        screenRegistration.setINovelUniqueOption( user.getINovelUniqueOption() );
+        if ( user.getIOfferingEligibility() != null ) {
+            screenRegistration.setIOfferingEligibility( String.valueOf( user.getIOfferingEligibility() ) );
+        }
+        screenRegistration.setIOfferingType( user.getIOfferingType() );
+        if ( user.getIOthFactDclsrWrrnt() != null ) {
+            screenRegistration.setIOthFactDclsrWrrnt( String.valueOf( user.getIOthFactDclsrWrrnt() ) );
+        }
+        if ( user.getIOutstandingCmmnt() != null ) {
+            screenRegistration.setIOutstandingCmmnt( String.valueOf( user.getIOutstandingCmmnt() ) );
+        }
+        if ( user.getIPendConfTremtReq() != null ) {
+            screenRegistration.setIPendConfTremtReq( String.valueOf( user.getIPendConfTremtReq() ) );
+        }
+        screenRegistration.setIPreprDrsRejectLtr( user.getIPreprDrsRejectLtr() );
+        screenRegistration.setIRepIssurOngoingOffrngs( user.getIRepIssurOngoingOffrngs() );
+        if ( user.getIReviewLvlId() != null ) {
+            screenRegistration.setIReviewLvlId( BigDecimal.valueOf( user.getIReviewLvlId() ) );
+        }
+        screenRegistration.setIRvwAddnInfo( user.getIRvwAddnInfo() );
+        screenRegistration.setIRvwLvlAddInfoOthrText( user.getIRvwLvlAddInfoOthrText() );
+        screenRegistration.setIRvwReason( user.getIRvwReason() );
+        if ( user.getIScreenerSubmit() != null ) {
+            screenRegistration.setIScreenerSubmit( String.valueOf( user.getIScreenerSubmit() ) );
+        }
+        if ( user.getISecuritiesEligibility() != null ) {
+            screenRegistration.setISecuritiesEligibility( String.valueOf( user.getISecuritiesEligibility() ) );
+        }
+        if ( user.getISendToAdOffCrfm() != null ) {
+            screenRegistration.setISendToAdOffCrfm( String.valueOf( user.getISendToAdOffCrfm() ) );
+        }
+        screenRegistration.setIShouldBeBedbug( user.getIShouldBeBedbug() );
+        if ( user.getIShouldDedbugReason() != null ) {
+            screenRegistration.setIShouldDedbugReason( String.valueOf( user.getIShouldDedbugReason() ) );
+        }
+        screenRegistration.setITcrNumber( user.getITcrNumber() );
+        if ( user.getITcrvalue() != null ) {
+            screenRegistration.setITcrvalue( String.valueOf( user.getITcrvalue() ) );
+        }
+        screenRegistration.setIUniqueTrans( String.valueOf( user.isIUniqueTrans() ) );
+        screenRegistration.setIsTier2offeringNote( user.getIsTier2offeringNote() );
+        if ( user.getIsTier2offeringNoteFlg() != null ) {
+            screenRegistration.setIsTier2offeringNoteFlg( String.valueOf( user.getIsTier2offeringNoteFlg() ) );
+        }
+        screenRegistration.setIssuerEligibilityNote( user.getIssuerEligibilityNote() );
+        if ( user.getIssuerEligibilityNoteFlg() != null ) {
+            screenRegistration.setIssuerEligibilityNoteFlg( String.valueOf( user.getIssuerEligibilityNoteFlg() ) );
+        }
+        if ( user.getMandatoryArbitrationFlg() != null ) {
+            screenRegistration.setMandatoryArbitrationFlg( String.valueOf( user.getMandatoryArbitrationFlg() ) );
+        }
+        screenRegistration.setMandatoryArbitrationNt( user.getMandatoryArbitrationNt() );
+        screenRegistration.setMandtryArbtnFedseclawNote( user.getMandtryArbtnFedseclawNote() );
+        if ( user.getMandtryArbtnFedseclawnoteflg() != null ) {
+            screenRegistration.setMandtryArbtnFedseclawnoteflg( String.valueOf( user.getMandtryArbtnFedseclawnoteflg() ) );
+        }
+        screenRegistration.setMatrlAcqNonReptCompNt( user.getMatrlAcqNonReptCompNt() );
+        if ( user.getMatrlAcqNonReptCompNtFlg() != null ) {
+            screenRegistration.setMatrlAcqNonReptCompNtFlg( String.valueOf( user.getMatrlAcqNonReptCompNtFlg() ) );
+        }
+        screenRegistration.setNovelUniqueOptionText( user.getNovelUniqueOptionText() );
+        if ( user.getNrsiLastDateChecked() != null ) {
+            screenRegistration.setNrsiLastDateChecked( new Timestamp( user.getNrsiLastDateChecked().getTime() ) );
+        }
+        screenRegistration.setOfferingEligibilityNote( user.getOfferingEligibilityNote() );
+        if ( user.getOfferingEligibilityNoteFlg() != null ) {
+            screenRegistration.setOfferingEligibilityNoteFlg( String.valueOf( user.getOfferingEligibilityNoteFlg() ) );
+        }
+        screenRegistration.setOthFactDclsrWrrntNt( user.getOthFactDclsrWrrntNt() );
+        if ( user.getOthFactDclsrWrrntNtFlg() != null ) {
+            screenRegistration.setOthFactDclsrWrrntNtFlg( String.valueOf( user.getOthFactDclsrWrrntNtFlg() ) );
+        }
+        screenRegistration.setOutstandingCmmntNt( user.getOutstandingCmmntNt() );
+        if ( user.getOutstandingCmmntNtFlg() != null ) {
+            screenRegistration.setOutstandingCmmntNtFlg( String.valueOf( user.getOutstandingCmmntNtFlg() ) );
+        }
+        screenRegistration.setPendConfTremtReqNt( user.getPendConfTremtReqNt() );
+        if ( user.getPendConfTremtReqNtFlg() != null ) {
+            screenRegistration.setPendConfTremtReqNtFlg( String.valueOf( user.getPendConfTremtReqNtFlg() ) );
+        }
+        screenRegistration.setRepIssurOngoingOffrngsNt( user.getRepIssurOngoingOffrngsNt() );
+        screenRegistration.setRepIssurOngoingOffrngsNtFlg( user.getRepIssurOngoingOffrngsNtFlg() );
+        if ( user.getScreenRegId() != null ) {
+            screenRegistration.setScreenRegId( user.getScreenRegId() );
+        }
+        if ( user.getScreening() != null ) {
+            screenRegistration.setScreening( maptoScreening( Integer.parseInt( user.getScreening() ) ) );
+        }
+        screenRegistration.setSecondScreenerName( user.getSecondScreenerName() );
+        screenRegistration.setSecondScreenerSaveDt( user.getSecondScreenerSaveDt() );
+        screenRegistration.setSecuritiesEligibilityNote( user.getSecuritiesEligibilityNote() );
+        if ( user.getSecuritiesEligibilityNoteflg() != null ) {
+            screenRegistration.setSecuritiesEligibilityNoteflg( String.valueOf( user.getSecuritiesEligibilityNoteflg() ) );
+        }
+        screenRegistration.setSeniorScreenerSeniorAttributeValue( user.getSeniorScreenerSeniorAttributeValue() );
+        if ( user.getShareholderAbilityProvsFlg() != null ) {
+            screenRegistration.setShareholderAbilityProvsFlg( String.valueOf( user.getShareholderAbilityProvsFlg() ) );
+        }
+        screenRegistration.setShareholderAbilityProvsNt( user.getShareholderAbilityProvsNt() );
+        if ( user.getTcrLastDateChecked() != null ) {
+            screenRegistration.setTcrLastDateChecked( new Timestamp( user.getTcrLastDateChecked().getTime() ) );
+        }
+        screenRegistration.setTcrNote( user.getTcrNote() );
+        if ( user.getTcrNoteFlg() != null ) {
+            screenRegistration.setTcrNoteFlg( String.valueOf( user.getTcrNoteFlg() ) );
+        }
+        screenRegistration.setTierRegA( user.getTierRegA() );
+        screenRegistration.setUniqueTransNt( user.getUniqueTransNt() );
+        if ( user.getUniqueTransNtFlg() != null ) {
+            screenRegistration.setUniqueTransNtFlg( String.valueOf( user.getUniqueTransNtFlg() ) );
+        }
+
+        return screenRegistration;
+    }
+
+    @Override
+    public List<ScreenDfDataDto> mapToScreenDfDataDto(List<ScreenDfData> screenDfData) {
+        if ( screenDfData == null ) {
+            return null;
+        }
+
+        List<ScreenDfDataDto> list = new ArrayList<ScreenDfDataDto>( screenDfData.size() );
+        for ( ScreenDfData screenDfData1 : screenDfData ) {
+            list.add( screenDfDataToScreenDfDataDto( screenDfData1 ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<ScreeningDynamicFieldsDataDto> mapToScreenDynamicDataDto1(List<ScreenDynamicField> screenDfData) {
+        if ( screenDfData == null ) {
+            return null;
+        }
+
+        List<ScreeningDynamicFieldsDataDto> list = new ArrayList<ScreeningDynamicFieldsDataDto>( screenDfData.size() );
+        for ( ScreenDynamicField screenDynamicField : screenDfData ) {
+            list.add( screenDynamicFieldToScreeningDynamicFieldsDataDto( screenDynamicField ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<ScreeningCaseDto> mapToScreenCaseDto(List<ScreenCase> screenCase) {
+        if ( screenCase == null ) {
+            return null;
+        }
+
+        List<ScreeningCaseDto> list = new ArrayList<ScreeningCaseDto>( screenCase.size() );
+        for ( ScreenCase screenCase1 : screenCase ) {
+            list.add( mapToScreenCaseDto( screenCase1 ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public ScreenCase mapToScreenCase(ScreeningCaseDto screenCase) {
+        if ( screenCase == null ) {
+            return null;
+        }
+
+        ScreenCase screenCase1 = new ScreenCase();
+
+        screenCase1.setScreening( maptoScreening( screenCase.getScreeningId() ) );
+        screenCase1.setCreatedBy( screenCase.getCreatedBy() );
+        try {
+            if ( screenCase.getCreatedDt() != null ) {
+                screenCase1.setCreatedDt( new SimpleDateFormat().parse( screenCase.getCreatedDt() ) );
+            }
+        }
+        catch ( ParseException e ) {
+            throw new RuntimeException( e );
+        }
+        screenCase1.setUpdatedBy( screenCase.getUpdatedBy() );
+        try {
+            if ( screenCase.getUpdatedDt() != null ) {
+                screenCase1.setUpdatedDt( new SimpleDateFormat().parse( screenCase.getUpdatedDt() ) );
+            }
+        }
+        catch ( ParseException e ) {
+            throw new RuntimeException( e );
+        }
+        if ( screenCase.getScreenCaseId() != null ) {
+            screenCase1.setScreenCaseId( screenCase.getScreenCaseId() );
+        }
+        screenCase1.setBackupCfContact( screenCase.getBackupCfContact() );
+        screenCase1.setCaseNumber( screenCase.getCaseNumber() );
+        if ( screenCase.getCfMstReviewId() != null ) {
+            screenCase1.setCfMstReviewId( screenCase.getCfMstReviewId().longValue() );
+        }
+        screenCase1.setDeleted( screenCase.getDeleted() );
+        screenCase1.setEnfAd( screenCase.getEnfAd() );
+        screenCase1.setEnfAdEmail( screenCase.getEnfAdEmail() );
+        screenCase1.setEnfAttorney( screenCase.getEnfAttorney() );
+        screenCase1.setEnfAttorneyEmail( screenCase.getEnfAttorneyEmail() );
+        screenCase1.setIpnDate( screenCase.getIpnDate() );
+        screenCase1.setIpnDoc( screenCase.getIpnDoc() );
+        screenCase1.setIpnGenerated( screenCase.getIpnGenerated() );
+        if ( screenCase.getReviewRound() != null ) {
+            screenCase1.setReviewRound( BigDecimal.valueOf( screenCase.getReviewRound() ) );
+        }
+        screenCase1.setScreener( screenCase.getScreener() );
+
+        return screenCase1;
+    }
+
+    @Override
+    public RvwAuditInfo mapToRvwAudInfo(RvwAuditInfoDto rvwAudit) {
+        if ( rvwAudit == null ) {
+            return null;
+        }
+
+        RvwAuditInfo rvwAuditInfo = new RvwAuditInfo();
+
+        rvwAuditInfo.setRvwAuditInfoPK( rvwAuditInfoDtoToRvwAuditInfoPK( rvwAudit ) );
+        rvwAuditInfo.setAuditInfoNote( rvwAudit.getAuditInfoNote() );
+        rvwAuditInfo.setAuditedDt( rvwAudit.getAuditedDt() );
+        rvwAuditInfo.setAuditor( rvwAudit.getAuditor() );
+        rvwAuditInfo.setConsentDt( rvwAudit.getConsentDt() );
+        rvwAuditInfo.setFsType( rvwAudit.getFsType() );
+        rvwAuditInfo.setFsTypeOth( rvwAudit.getFsTypeOth() );
+        rvwAuditInfo.setFsUpdated( rvwAudit.getFsUpdated() );
+        rvwAuditInfo.setFsUpdatedDueDt( rvwAudit.getFsUpdatedDueDt() );
+        rvwAuditInfo.setLatestUnauditedDt( rvwAudit.getLatestUnauditedDt() );
+        rvwAuditInfo.setLocation( rvwAudit.getLocation() );
+        rvwAuditInfo.setPcaob( rvwAudit.getPcaob() );
+        rvwAuditInfo.setReportDt( rvwAudit.getReportDt() );
+
+        return rvwAuditInfo;
+    }
+
+    @Override
+    public ScreeningCaseDto mapToScreenCaseDto(ScreenCase saveScreeningCase) {
+        if ( saveScreeningCase == null ) {
+            return null;
+        }
+
+        ScreeningCaseDto screeningCaseDto = new ScreeningCaseDto();
+
+        screeningCaseDto.setBackupCfContact( saveScreeningCase.getBackupCfContact() );
+        screeningCaseDto.setCaseNumber( saveScreeningCase.getCaseNumber() );
+        if ( saveScreeningCase.getCfMstReviewId() != null ) {
+            screeningCaseDto.setCfMstReviewId( saveScreeningCase.getCfMstReviewId().intValue() );
+        }
+        screeningCaseDto.setCreatedBy( saveScreeningCase.getCreatedBy() );
+        if ( saveScreeningCase.getCreatedDt() != null ) {
+            screeningCaseDto.setCreatedDt( new SimpleDateFormat().format( saveScreeningCase.getCreatedDt() ) );
+        }
+        screeningCaseDto.setDeleted( saveScreeningCase.getDeleted() );
+        screeningCaseDto.setEnfAd( saveScreeningCase.getEnfAd() );
+        screeningCaseDto.setEnfAdEmail( saveScreeningCase.getEnfAdEmail() );
+        screeningCaseDto.setEnfAttorney( saveScreeningCase.getEnfAttorney() );
+        screeningCaseDto.setEnfAttorneyEmail( saveScreeningCase.getEnfAttorneyEmail() );
+        screeningCaseDto.setIpnDate( saveScreeningCase.getIpnDate() );
+        screeningCaseDto.setIpnDoc( saveScreeningCase.getIpnDoc() );
+        screeningCaseDto.setIpnGenerated( saveScreeningCase.getIpnGenerated() );
+        if ( saveScreeningCase.getReviewRound() != null ) {
+            screeningCaseDto.setReviewRound( saveScreeningCase.getReviewRound().intValue() );
+        }
+        screeningCaseDto.setScreenCaseId( (int) saveScreeningCase.getScreenCaseId() );
+        screeningCaseDto.setScreener( saveScreeningCase.getScreener() );
+        screeningCaseDto.setUpdatedBy( saveScreeningCase.getUpdatedBy() );
+        if ( saveScreeningCase.getUpdatedDt() != null ) {
+            screeningCaseDto.setUpdatedDt( new SimpleDateFormat().format( saveScreeningCase.getUpdatedDt() ) );
+        }
+
+        return screeningCaseDto;
+    }
+
+    @Override
+    public Screening maptoScreening(Integer screeningId) {
+        if ( screeningId == null ) {
+            return null;
+        }
+
+        Screening screening = new Screening();
+
+        if ( screeningId != null ) {
+            screening.setScreeningId( screeningId );
+        }
+
+        return screening;
+    }
+
+    @Override
+    public List<WorkspaceReviewPermFilesDto> maptoPermFileDto(List<PermFileShort> permFileItems) {
+        if ( permFileItems == null ) {
+            return null;
+        }
+
+        List<WorkspaceReviewPermFilesDto> list = new ArrayList<WorkspaceReviewPermFilesDto>( permFileItems.size() );
+        for ( PermFileShort permFileShort : permFileItems ) {
+            list.add( permFileShortToWorkspaceReviewPermFilesDto( permFileShort ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public RvwPreliminaryStepsWrksp mapToPreliminaryStp(RvwPreliminaryStepsWrkspDto rvwPreliminarySteptoadd) {
+        if ( rvwPreliminarySteptoadd == null ) {
+            return null;
+        }
+
+        RvwPreliminaryStepsWrksp rvwPreliminaryStepsWrksp = new RvwPreliminaryStepsWrksp();
+
+        rvwPreliminaryStepsWrksp.setId( rvwPreliminaryStepsWrkspDtoToRvwPreliminaryStepsWrkspPK( rvwPreliminarySteptoadd ) );
+        if ( rvwPreliminarySteptoadd.getDelayAmendMissing() != null ) {
+            rvwPreliminaryStepsWrksp.setDelayAmendMissing( String.valueOf( rvwPreliminarySteptoadd.getDelayAmendMissing() ) );
+        }
+        rvwPreliminaryStepsWrksp.setIssuerElegibility( rvwPreliminarySteptoadd.getIssuerElegibility() );
+        if ( rvwPreliminarySteptoadd.getNewCtr() != null ) {
+            rvwPreliminaryStepsWrksp.setNewCtr( String.valueOf( rvwPreliminarySteptoadd.getNewCtr() ) );
+        }
+        if ( rvwPreliminarySteptoadd.getNewReferral() != null ) {
+            rvwPreliminaryStepsWrksp.setNewReferral( String.valueOf( rvwPreliminarySteptoadd.getNewReferral() ) );
+        }
+        rvwPreliminaryStepsWrksp.setOfferingElegibility( rvwPreliminarySteptoadd.getOfferingElegibility() );
+        rvwPreliminaryStepsWrksp.setSecurityElegibility( rvwPreliminarySteptoadd.getSecurityElegibility() );
+        rvwPreliminaryStepsWrksp.setStlIncmpltFnanclStmt( rvwPreliminarySteptoadd.getStlIncmpltFnanclStmt() );
+        rvwPreliminaryStepsWrksp.setUniqueTrnsOthFct( rvwPreliminarySteptoadd.getUniqueTrnsOthFct() );
+
+        return rvwPreliminaryStepsWrksp;
+    }
+
+    @Override
+    public ScreenDrsRegistrationDto mapToScreenDrsRegDto(ScreenDrsRegistration drs) {
+        if ( drs == null ) {
+            return null;
+        }
+
+        ScreenDrsRegistrationDto screenDrsRegistrationDto = new ScreenDrsRegistrationDto();
+
+        screenDrsRegistrationDto.setCfMstReviewId( drs.getCfMstReviewId() );
+        screenDrsRegistrationDto.setFollowMktCapBsdFlgDt( drs.getFollowMktCapBsdFlgDt() );
+        screenDrsRegistrationDto.setIpoAnnualRevenue( drs.getIpoAnnualRevenue() );
+        screenDrsRegistrationDto.setReviewRound( drs.getReviewRound() );
+        screenDrsRegistrationDto.setSellingShareHolder( drs.getSellingShareHolder() );
+
+        return screenDrsRegistrationDto;
+    }
+
+    @Override
+    public ScreenDrsRegistration mapToScreenDrsReg(ScreenDrsRegistrationDto drs) {
+        if ( drs == null ) {
+            return null;
+        }
+
+        ScreenDrsRegistration screenDrsRegistration = new ScreenDrsRegistration();
+
+        screenDrsRegistration.setCfMstReviewId( drs.getCfMstReviewId() );
+        screenDrsRegistration.setFollowMktCapBsdFlgDt( drs.getFollowMktCapBsdFlgDt() );
+        screenDrsRegistration.setIpoAnnualRevenue( drs.getIpoAnnualRevenue() );
+        screenDrsRegistration.setReviewRound( drs.getReviewRound() );
+        screenDrsRegistration.setSellingShareHolder( drs.getSellingShareHolder() );
+
+        return screenDrsRegistration;
+    }
+
+    private String xmlGregorianCalendarToString( XMLGregorianCalendar xcal, String dateFormat ) {
+        if ( xcal == null ) {
+            return null;
+        }
+
+        if (dateFormat == null ) {
+            return xcal.toString();
+        }
+        else {
+            Date d = xcal.toGregorianCalendar().getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat( dateFormat );
+            return sdf.format( d );
+        }
+    }
+
+    private XMLGregorianCalendar dateToXmlGregorianCalendar( Date date ) {
+        if ( date == null ) {
+            return null;
+        }
+
+        GregorianCalendar c = new GregorianCalendar();
+        c.setTime( date );
+        return datatypeFactory.newXMLGregorianCalendar( c );
+    }
+
+    private Long userScreeningScreeningId(ScreenRegistration screenRegistration) {
+        Screening screening = screenRegistration.getScreening();
+        if ( screening == null ) {
+            return null;
+        }
+        return screening.getScreeningId();
+    }
+
+    protected ScreenDfDataDto screenDfDataToScreenDfDataDto(ScreenDfData screenDfData) {
+        if ( screenDfData == null ) {
+            return null;
+        }
+
+        ScreenDfDataDto screenDfDataDto = new ScreenDfDataDto();
+
+        screenDfDataDto.setFScreenValue( screenDfData.getFScreenValue() );
+        screenDfDataDto.setIScreenValue( screenDfData.getIScreenValue() );
+        screenDfDataDto.setIsActive( screenDfData.getIsActive() );
+        screenDfDataDto.setLabelOrderBy( screenDfData.getLabelOrderBy() );
+        screenDfDataDto.setScreenValueNote( screenDfData.getScreenValueNote() );
+        screenDfDataDto.setScreenValueNoteFlg( screenDfData.getScreenValueNoteFlg() );
+        screenDfDataDto.setScreeningId( screenDfData.getScreeningId() );
+        screenDfDataDto.setSddId( screenDfData.getSddId() );
+
+        return screenDfDataDto;
+    }
+
+    protected ScreeningDynamicFieldsDataDto screenDynamicFieldToScreeningDynamicFieldsDataDto(ScreenDynamicField screenDynamicField) {
+        if ( screenDynamicField == null ) {
+            return null;
+        }
+
+        ScreeningDynamicFieldsDataDto screeningDynamicFieldsDataDto = new ScreeningDynamicFieldsDataDto();
+
+        screeningDynamicFieldsDataDto.setCreatedBy( screenDynamicField.getCreatedBy() );
+        if ( screenDynamicField.getCreatedDt() != null ) {
+            screeningDynamicFieldsDataDto.setCreatedDt( new SimpleDateFormat().format( screenDynamicField.getCreatedDt() ) );
+        }
+        if ( screenDynamicField.getIsActive() != null ) {
+            screeningDynamicFieldsDataDto.setIsActive( Integer.parseInt( screenDynamicField.getIsActive() ) );
+        }
+        screeningDynamicFieldsDataDto.setLabelDisplayName( screenDynamicField.getLabelDisplayName() );
+        if ( screenDynamicField.getLabelOrderBy() != null ) {
+            screeningDynamicFieldsDataDto.setLabelOrderBy( screenDynamicField.getLabelOrderBy().intValue() );
+        }
+        screeningDynamicFieldsDataDto.setSdfId( (int) screenDynamicField.getSdfId() );
+        screeningDynamicFieldsDataDto.setUpdatedBy( screenDynamicField.getUpdatedBy() );
+        if ( screenDynamicField.getUpdatedDt() != null ) {
+            screeningDynamicFieldsDataDto.setUpdatedDt( new SimpleDateFormat().format( screenDynamicField.getUpdatedDt() ) );
+        }
+
+        return screeningDynamicFieldsDataDto;
+    }
+
+    protected RvwAuditInfoPK rvwAuditInfoDtoToRvwAuditInfoPK(RvwAuditInfoDto rvwAuditInfoDto) {
+        if ( rvwAuditInfoDto == null ) {
+            return null;
+        }
+
+        RvwAuditInfoPK rvwAuditInfoPK = new RvwAuditInfoPK();
+
+        rvwAuditInfoPK.setCfMstReviewId( rvwAuditInfoDto.getCfMstReviewId() );
+        rvwAuditInfoPK.setRvwProfessionId( rvwAuditInfoDto.getRvwProfessionId() );
+        rvwAuditInfoPK.setReviewRound( rvwAuditInfoDto.getReviewRound() );
+
+        return rvwAuditInfoPK;
+    }
+
+    protected WorkspaceReviewPermFilesDto permFileShortToWorkspaceReviewPermFilesDto(PermFileShort permFileShort) {
+        if ( permFileShort == null ) {
+            return null;
+        }
+
+        WorkspaceReviewPermFilesDto workspaceReviewPermFilesDto = new WorkspaceReviewPermFilesDto();
+
+        if ( permFileShort.getCfMstReviewId() != null ) {
+            workspaceReviewPermFilesDto.setCfMstReviewId( permFileShort.getCfMstReviewId().intValue() );
+        }
+        if ( permFileShort.getCompanyPermFileId() != null ) {
+            workspaceReviewPermFilesDto.setCompanyPermFileId( permFileShort.getCompanyPermFileId().toString() );
+        }
+        workspaceReviewPermFilesDto.setCreatedByName( permFileShort.getCreatedByName() );
+        workspaceReviewPermFilesDto.setCreatedDt( permFileShort.getCreatedDt() );
+        if ( permFileShort.getDeleted() != null ) {
+            workspaceReviewPermFilesDto.setDeleted( Integer.parseInt( permFileShort.getDeleted() ) );
+        }
+        workspaceReviewPermFilesDto.setExmStsUpdatedByName( permFileShort.getExmStsUpdatedByName() );
+        workspaceReviewPermFilesDto.setExmrStatusUpdatedDt( xmlGregorianCalendarToString( dateToXmlGregorianCalendar( permFileShort.getExmrStatusUpdatedDt() ), null ) );
+        workspaceReviewPermFilesDto.setExmrTopicStatus( permFileShort.getExmrTopicStatus() );
+        if ( permFileShort.getReviewRound() != null ) {
+            workspaceReviewPermFilesDto.setReviewRound( permFileShort.getReviewRound().intValue() );
+        }
+        if ( permFileShort.getRvwPermFileId() != null ) {
+            workspaceReviewPermFilesDto.setRvwPermFileId( permFileShort.getRvwPermFileId().intValue() );
+        }
+        if ( permFileShort.getRvwProfessionId() != null ) {
+            workspaceReviewPermFilesDto.setRvwProfessionId( permFileShort.getRvwProfessionId().intValue() );
+        }
+        workspaceReviewPermFilesDto.setRvwrTopicStatus( permFileShort.getRvwrTopicStatus() );
+        workspaceReviewPermFilesDto.setTagFlg( permFileShort.getTagFlg() );
+        workspaceReviewPermFilesDto.setTopicApprovedDt( xmlGregorianCalendarToString( dateToXmlGregorianCalendar( permFileShort.getTopicApprovedDt() ), null ) );
+        workspaceReviewPermFilesDto.setTopicDescription( permFileShort.getTopicDescription() );
+        workspaceReviewPermFilesDto.setTopicName( permFileShort.getTopicName() );
+        workspaceReviewPermFilesDto.setTpcApdByName( permFileShort.getTpcApdByName() );
+        workspaceReviewPermFilesDto.setUpdatedByName( permFileShort.getUpdatedByName() );
+
+        return workspaceReviewPermFilesDto;
+    }
+
+    protected RvwPreliminaryStepsWrkspPK rvwPreliminaryStepsWrkspDtoToRvwPreliminaryStepsWrkspPK(RvwPreliminaryStepsWrkspDto rvwPreliminaryStepsWrkspDto) {
+        if ( rvwPreliminaryStepsWrkspDto == null ) {
+            return null;
+        }
+
+        RvwPreliminaryStepsWrkspPK rvwPreliminaryStepsWrkspPK = new RvwPreliminaryStepsWrkspPK();
+
+        rvwPreliminaryStepsWrkspPK.setRvwProfessionId( rvwPreliminaryStepsWrkspDto.getRvwProfessionId() );
+        rvwPreliminaryStepsWrkspPK.setRvwRound( rvwPreliminaryStepsWrkspDto.getRvwRound() );
+        rvwPreliminaryStepsWrkspPK.setCfMstReviewId( rvwPreliminaryStepsWrkspDto.getCfMstReviewId() );
+
+        return rvwPreliminaryStepsWrkspPK;
+    }
+}
