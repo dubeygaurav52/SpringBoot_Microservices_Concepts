@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="21-SB-Web-PathParam-App">
-        <property name="context-root" value="21-SB-Web-PathParam-App"/>
-        <property name="java-output-path" value="/21-SB-Web-PathParam-App/target/classes"/>
-    </wb-module>
-</project-modules>

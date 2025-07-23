@@ -1,9 +1,0 @@
-package in.gaurav.pojo;
-
-public class Plan {
-
-	private Integer planId;
-	private String planName;
-	private String planStatus;
-	
-}

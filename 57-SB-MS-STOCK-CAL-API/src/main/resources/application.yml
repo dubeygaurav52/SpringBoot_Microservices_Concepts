@@ -2,4 +2,4 @@ server:
   port: 9999
 spring:
   application:
-    name: 57-SB-MS-STOCK-CAL-API
+    name: STOCK-CAL-API

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: Admin-Client1-API
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090/
+server:
+  port: 1212
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

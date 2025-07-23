@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Gateway-Api
+server:
+  port: 3333
+zuul:
+  prefix: /ms
+  routes:
+    price:
+      path: /api1/**
+      serviceId: STOCK-PRICE-API
+    calc:
+      path: /api2/**
+      serviceId: STOCK-CAL-API

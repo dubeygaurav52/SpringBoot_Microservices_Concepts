@@ -1,5 +1,0 @@
-package in.gaurav.request;
-
-public class SearchRequest {
-
-}
