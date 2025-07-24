@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import in.gaurav.entity.Question;
 import in.gaurav.entity.QuestionWrapper;
-import in.gaurav.entity.Quiz;
 import in.gaurav.entity.Responce;
 import in.gaurav.repository.QuestionRepository;
 
